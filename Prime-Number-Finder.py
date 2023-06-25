@@ -40,18 +40,28 @@ class pencere(QWidget):
             sayi = int(self.sayi.text())
         except:
             pass
-        sayac = 0
-        for i in range(2,sayi):
-            if(sayi % i == 0):
-                sayac += 1
-        if(sayac == 0):
-            self.yazi.setText(str(sayi) + " sayısı asaldır.")
-        else:
+        
+        if(sayi == 0):
             self.yazi.setText(str(sayi) + " sayısı asal değildir.")
+        elif(sayi != 0 and sayi > 0):
+            sayac = 0
+            for i in range(2,sayi):
+                if(sayi % i == 0):
+                    sayac += 1
+            
+            if(sayac == 0):
+                self.yazi.setText(str(sayi) + " sayısı asaldır.")
+            else:
+                self.yazi.setText(str(sayi) + " sayısı asal değildir.")
+        elif(sayi < 0):
+            self.yazi.setText("Pozitif bir sayı giriniz.")
+        else:
+            self.yazi.setText("Bir sayı giriniz.")
+            
+            
 uygulama = QApplication(sys.argv)
 pencere = pencere()
 sys.exit(uygulama.exec_())
-
 
 # In[ ]:
 
